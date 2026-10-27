@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ink: #0f172a;
+    --color-ink-muted: #475569;
+    --color-bg: #ffffff;
+    --color-baby-blue-light: #f0f9ff;
+    --color-baby-blue: #e0f2fe;
+    --color-baby-blue-border: #bae6fd;
+    --color-sky-accent: #0284c7;
+    --color-sky-bright: #38bdf8;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #0284c7;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom Range Input for Before & After Slider */
+input[type="range"].comparison-slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: ew-resize;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+input[type="range"].comparison-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0284c7;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  cursor: grab;
+  position: relative;
+  z-index: 30;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].comparison-slider-input:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.08);
+}
+
+input[type="range"].comparison-slider-input::-moz-range-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0284c7;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  cursor: grab;
+}
+
+/* Pure CSS Skeleton Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f0f9ff 25%, #e0f2fe 50%, #f0f9ff 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer {
+    animation: none;
+    background: #f0f9ff;
+  }
+}
